@@ -330,7 +330,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <h4>Persyaratan</h4>
                         <div id="persyaratan-fields">
                             <div class="dynamic-field">
-                                <textarea name="persyaratan[]" placeholder="Deskripsi persyaratan" required style="flex: 1; height: 60px;"></textarea>
+                                <textarea name="persyaratan[]" placeholder="Deskripsi persyaratan" required style="flex: 1; height: 40px;"></textarea>
                                 <button type="button" class="remove-btn" onclick="removeField(this)">×</button>
                             </div>
                         </div>
@@ -675,7 +675,7 @@ function addPersyaratanField() {
     const div = document.createElement('div');
     div.className = 'dynamic-field';
     div.innerHTML = `
-        <textarea name="persyaratan[]" placeholder="Deskripsi persyaratan" required style="flex: 1; height: 60px;"></textarea>
+        <textarea name="persyaratan[]" placeholder="Deskripsi persyaratan" required style="flex: 1; height: 40px;"></textarea>
         <button type="button" class="remove-btn" onclick="removeField(this)">×</button>
     `;
     container.appendChild(div);
@@ -789,7 +789,7 @@ function addEditPersyaratanField() {
     const div = document.createElement('div');
     div.className = 'dynamic-field';
     div.innerHTML = `
-        <textarea name="persyaratan[]" placeholder="Deskripsi persyaratan" required style="flex: 1; height: 60px;"></textarea>
+        <textarea name="persyaratan[]" placeholder="Deskripsi persyaratan" required style="flex: 1; height: 40px;"></textarea>
         <button type="button" class="remove-btn" onclick="removeField(this)">×</button>
     `;
     container.appendChild(div);
@@ -1147,7 +1147,7 @@ function populateEditPersyaratan(persyaratan) {
             const deskripsi = req.deskripsi || req.persyaratan || req.nama || req;
             
             div.innerHTML = `
-                <textarea name="persyaratan[]" required style="flex: 1; height: 60px;">${deskripsi}</textarea>
+                <textarea name="persyaratan[]" required style="flex: 1; height: 40px;">${deskripsi}</textarea>
                 <button type="button" class="remove-btn" onclick="removeField(this)">×</button>
             `;
             container.appendChild(div);
