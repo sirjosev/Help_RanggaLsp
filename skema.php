@@ -290,8 +290,8 @@ $metode_pengujian_list = $skemaManager->getMetodePengujianBySkemaId($skema_id);
                     <td>: <?php echo $skema['unit_kompetensi']; ?> Unit</td>
                 </tr>
                 <tr>
-                    <td>Masa Berlaku Sertifikat</td>
-                    <td>: <?php echo htmlspecialchars($skema['masa_berlaku']); ?></td>
+                    <td>Masa Berlaku</td>
+                    <td>: <?php echo $skema['masa_berlaku']; ?></td>
                 </tr>
                 <tr style="vertical-align: top;">
                     <td>Ringkasan</td>
@@ -427,7 +427,7 @@ $metode_pengujian_list = $skemaManager->getMetodePengujianBySkemaId($skema_id);
         <div class="method-section">
             <h4>Pemeliharaan Sertifikasi</h4>
             <p>Untuk mempertahankan sertifikasi, pemegang sertifikat dapat mengikuti kegiatan asesmen ulang (re-asesmen) sebelum masa berlaku habis.</p>
-    <p><strong>Masa Berlaku Sertifikat:</strong> <?php echo htmlspecialchars($skema['masa_berlaku']); ?></p>
+            <p><strong>Masa Berlaku:</strong> <?php echo htmlspecialchars($skema['masa_berlaku']); ?> sejak tanggal diterbitkan.</p>
             <p><strong>Proses Pemeliharaan:</strong></p>
             <ul>
                 <li>Pengajuan permohonan re-asesmen 3 bulan sebelum masa berlaku habis</li>

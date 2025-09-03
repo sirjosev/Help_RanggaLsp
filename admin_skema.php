@@ -283,8 +283,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input type="number" id="unit_kompetensi" name="unit_kompetensi" required>
                     </div>
                     <div class="form-group">
-                        <label for="masa_berlaku">Masa Berlaku Sertifikat</label>
-                        <input type="text" id="masa_berlaku" name="masa_berlaku" value="3 Tahun" placeholder="Contoh: 3 Tahun">
+                        <label for="masa_berlaku">Masa Berlaku (Tahun)</label>
+                        <input type="number" id="masa_berlaku" name="masa_berlaku" value="3">
                     </div>
                 </div>
 
@@ -303,10 +303,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="tab-container">
                     <div class="tab-buttons">
                         <button type="button" class="tab-btn active" onclick="showAddTab('unit')">Unit Kompetensi</button>
-                        <button type="button" class="tab-btn" onclick="showAddTab('asesmen')">Metode Asesmen</button>
-                        <button type="button" class="tab-btn" onclick="showAddTab('metode_pengujian')">Metode Pengujian</button>
                         <button type="button" class="tab-btn" onclick="showAddTab('persyaratan')">Persyaratan</button>
+                        <button type="button" class="tab-btn" onclick="showAddTab('dokumen')">Dokumen Persyaratan</button>
+                        <button type="button" class="tab-btn" onclick="showAddTab('asesmen')">Metode Asesmen</button>
                         <button type="button" class="tab-btn" onclick="showAddTab('pemeliharaan')">Pemeliharaan</button>
+                        <button type="button" class="tab-btn" onclick="showAddTab('metode_pengujian')">Metode Pengujian</button>
                     </div>
 
                     <!-- Unit Kompetensi Tab -->
@@ -322,6 +323,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </div>
                         </div>
                         <button type="button" class="add-btn" onclick="addUnitField()">+ Tambah Unit</button>
+                    </div>
+
+                    <!-- Persyaratan Tab -->
+                    <div id="add-tab-persyaratan" class="tab-content">
+                        <h4>Persyaratan</h4>
+                        <div id="persyaratan-fields">
+                            <div class="dynamic-field">
+                                <textarea name="persyaratan[]" placeholder="Deskripsi persyaratan" required style="flex: 1; height: 60px;"></textarea>
+                                <button type="button" class="remove-btn" onclick="removeField(this)">×</button>
+                            </div>
+                        </div>
+                        <button type="button" class="add-btn" onclick="addPersyaratanField()">+ Tambah Persyaratan</button>
+                    </div>
+
+                    <!-- Dokumen Tab -->
+                    <div id="add-tab-dokumen" class="tab-content">
+                        <h4>Dokumen Persyaratan</h4>
+                        <div id="dokumen-fields">
+                            <div class="dynamic-field">
+                                <input type="text" name="dokumen_nama[]" placeholder="Nama Dokumen" required>
+                                <div class="checkbox-field">
+                                    <input type="checkbox" name="dokumen_wajib[0]" value="1" checked>
+                                    <label>Wajib</label>
+                                </div>
+                                <button type="button" class="remove-btn" onclick="removeField(this)">×</button>
+                            </div>
+                        </div>
+                        <button type="button" class="add-btn" onclick="addDokumenField()">+ Tambah Dokumen</button>
                     </div>
 
                     <!-- Metode Asesmen Tab -->
@@ -342,6 +371,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <button type="button" class="add-btn" onclick="addAsesmenField()">+ Tambah Metode</button>
                     </div>
 
+                    <!-- Pemeliharaan Tab -->
+                    <div id="add-tab-pemeliharaan" class="tab-content">
+                        <h4>Pemeliharaan Sertifikasi</h4>
+                        <div class="form-group">
+                            <textarea name="pemeliharaan" placeholder="Masukkan deskripsi pemeliharaan sertifikasi..." style="width: 100%; height: 100px;"></textarea>
+                        </div>
+                    </div>
+
                     <!-- Metode Pengujian Tab -->
                     <div id="add-tab-metode_pengujian" class="tab-content">
                         <h4>Metode Pengujian Skema</h4>
@@ -358,26 +395,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </div>
                         </div>
                         <button type="button" class="add-btn" onclick="addMetodePengujianField()">+ Tambah Metode</button>
-                    </div>
-
-                    <!-- Persyaratan Tab -->
-                    <div id="add-tab-persyaratan" class="tab-content">
-                        <h4>Persyaratan</h4>
-                        <div id="persyaratan-fields">
-                            <div class="dynamic-field">
-                                <textarea name="persyaratan[]" placeholder="Deskripsi persyaratan" required style="flex: 1; height: 60px;"></textarea>
-                                <button type="button" class="remove-btn" onclick="removeField(this)">×</button>
-                            </div>
-                        </div>
-                        <button type="button" class="add-btn" onclick="addPersyaratanField()">+ Tambah Persyaratan</button>
-                    </div>
-
-                    <!-- Pemeliharaan Tab -->
-                    <div id="add-tab-pemeliharaan" class="tab-content">
-                        <h4>Pemeliharaan Sertifikasi</h4>
-                        <div class="form-group">
-                            <textarea name="pemeliharaan" placeholder="Masukkan deskripsi pemeliharaan sertifikasi..." style="width: 100%; height: 100px;"></textarea>
-                        </div>
                     </div>
                 </div>
 
@@ -432,8 +449,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input type="number" id="edit_unit_kompetensi" name="unit_kompetensi" required>
                     </div>
                     <div class="form-group">
-                        <label for="edit_masa_berlaku">Masa Berlaku Sertifikat</label>
-                        <input type="text" id="edit_masa_berlaku" name="masa_berlaku" placeholder="Contoh: 3 Tahun">
+                        <label for="edit_masa_berlaku">Masa Berlaku (Tahun)</label>
+                        <input type="number" id="edit_masa_berlaku" name="masa_berlaku" value="3">
                     </div>
                 </div>
 
@@ -453,10 +470,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="tab-container">
                     <div class="tab-buttons">
                         <button type="button" class="tab-btn active" onclick="showEditTab('unit')">Unit Kompetensi</button>
-                        <button type="button" class="tab-btn" onclick="showEditTab('asesmen')">Metode Asesmen</button>
-                        <button type="button" class="tab-btn" onclick="showEditTab('metode_pengujian')">Metode Pengujian</button>
                         <button type="button" class="tab-btn" onclick="showEditTab('persyaratan')">Persyaratan</button>
+                        <button type="button" class="tab-btn" onclick="showEditTab('dokumen')">Dokumen Persyaratan</button>
+                        <button type="button" class="tab-btn" onclick="showEditTab('asesmen')">Metode Asesmen</button>
                         <button type="button" class="tab-btn" onclick="showEditTab('pemeliharaan')">Pemeliharaan</button>
+                        <button type="button" class="tab-btn" onclick="showEditTab('metode_pengujian')">Metode Pengujian</button>
                     </div>
 
                     <div id="edit-tab-unit" class="tab-content active">
@@ -465,10 +483,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <button type="button" class="add-btn" onclick="addEditUnitField()">+ Tambah Unit</button>
                     </div>
 
+                    <div id="edit-tab-persyaratan" class="tab-content">
+                        <h4>Persyaratan</h4>
+                        <div id="edit-persyaratan-fields"></div>
+                        <button type="button" class="add-btn" onclick="addEditPersyaratanField()">+ Tambah Persyaratan</button>
+                    </div>
+
+                    <div id="edit-tab-dokumen" class="tab-content">
+                        <h4>Dokumen Persyaratan</h4>
+                        <div id="edit-dokumen-fields"></div>
+                        <button type="button" class="add-btn" onclick="addEditDokumenField()">+ Tambah Dokumen</button>
+                    </div>
+
                     <div id="edit-tab-asesmen" class="tab-content">
                         <h4>Metode Asesmen</h4>
                         <div id="edit-asesmen-fields"></div>
                         <button type="button" class="add-btn" onclick="addEditAsesmenField()">+ Tambah Metode</button>
+                    </div>
+
+                    <!-- Pemeliharaan Tab for Edit -->
+                    <div id="edit-tab-pemeliharaan" class="tab-content">
+                        <h4>Pemeliharaan Sertifikasi</h4>
+                        <div class="form-group">
+                            <textarea id="edit_pemeliharaan" name="pemeliharaan" placeholder="Masukkan deskripsi pemeliharaan sertifikasi..." style="width: 100%; height: 100px;"></textarea>
+                        </div>
                     </div>
 
                     <!-- Metode Pengujian Tab for Edit -->
@@ -478,20 +516,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <!-- Field dinamis akan diisi di sini oleh JavaScript saat edit -->
                         </div>
                         <button type="button" class="add-btn" onclick="addEditMetodePengujianField()">+ Tambah Metode</button>
-                    </div>
-
-                    <div id="edit-tab-persyaratan" class="tab-content">
-                        <h4>Persyaratan</h4>
-                        <div id="edit-persyaratan-fields"></div>
-                        <button type="button" class="add-btn" onclick="addEditPersyaratanField()">+ Tambah Persyaratan</button>
-                    </div>
-
-                    <!-- Pemeliharaan Tab for Edit -->
-                    <div id="edit-tab-pemeliharaan" class="tab-content">
-                        <h4>Pemeliharaan Sertifikasi</h4>
-                        <div class="form-group">
-                            <textarea id="edit_pemeliharaan" name="pemeliharaan" placeholder="Masukkan deskripsi pemeliharaan sertifikasi..." style="width: 100%; height: 100px;"></textarea>
-                        </div>
                     </div>
                 </div>
 
@@ -982,7 +1006,7 @@ function populateEditForm(data) {
         safeSetValue('edit_jenis', skema.jenis);
         safeSetValue('edit_harga', skema.harga);
         safeSetValue('edit_unit_kompetensi', skema.unit_kompetensi);
-        safeSetValue('edit_masa_berlaku', skema.masa_berlaku || '');
+        safeSetValue('edit_masa_berlaku', skema.masa_berlaku || 3);
         safeSetValue('edit_ringkasan', skema.ringkasan);
         
         // Handle gambar
