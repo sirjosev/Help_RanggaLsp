@@ -283,8 +283,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input type="number" id="unit_kompetensi" name="unit_kompetensi" required>
                     </div>
                     <div class="form-group">
-                        <label for="masa_berlaku">Masa Berlaku (Tahun)</label>
-                        <input type="number" id="masa_berlaku" name="masa_berlaku" value="3">
+                        <label for="masa_berlaku">Masa Berlaku Sertifikat (Tahun)</label>
+                        <input type="number" id="masa_berlaku" name="masa_berlaku" placeholder="Contoh: 3">
                     </div>
                 </div>
 
@@ -449,8 +449,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input type="number" id="edit_unit_kompetensi" name="unit_kompetensi" required>
                     </div>
                     <div class="form-group">
-                        <label for="edit_masa_berlaku">Masa Berlaku (Tahun)</label>
-                        <input type="number" id="edit_masa_berlaku" name="masa_berlaku" value="3">
+                        <label for="edit_masa_berlaku">Masa Berlaku Sertifikat (Tahun)</label>
+                        <input type="number" id="edit_masa_berlaku" name="masa_berlaku" placeholder="Contoh: 3">
                     </div>
                 </div>
 
@@ -1006,7 +1006,7 @@ function populateEditForm(data) {
         safeSetValue('edit_jenis', skema.jenis);
         safeSetValue('edit_harga', skema.harga);
         safeSetValue('edit_unit_kompetensi', skema.unit_kompetensi);
-        safeSetValue('edit_masa_berlaku', skema.masa_berlaku || 3);
+        safeSetValue('edit_masa_berlaku', skema.masa_berlaku || '');
         safeSetValue('edit_ringkasan', skema.ringkasan);
         
         // Handle gambar

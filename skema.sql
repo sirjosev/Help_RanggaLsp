@@ -5,7 +5,7 @@ CREATE TABLE `skema` (
   `jenis` varchar(100) NOT NULL,
   `harga` decimal(10,2) NOT NULL,
   `unit_kompetensi` int(11) NOT NULL,
-  `masa_berlaku` varchar(255) NOT NULL DEFAULT '3 Tahun',
+  `masa_berlaku` int(11) DEFAULT NULL,
   `ringkasan` text DEFAULT NULL,
   `gambar` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -15,9 +15,9 @@ CREATE TABLE `skema` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `skema` (`id`, `nama`, `kode`, `jenis`, `harga`, `unit_kompetensi`, `masa_berlaku`, `ringkasan`, `gambar`, `created_at`, `updated_at`) VALUES
-(1, 'Junior Web Developer', 'JWD-001', 'Okupasi', 500000.00, 10, '3 Tahun', 'Skema ini untuk calon programmer web junior.', 'dksassets/img/skema_684ae725eaa7c.png', '2025-07-25 01:30:00', '2025-07-25 01:30:00'),
-(2, 'Digital Marketing', 'DM-001', 'Klaster', 750000.00, 8, '3 Tahun', 'Skema ini mencakup berbagai aspek pemasaran digital.', 'dksassets/img/skema_684ae72a02aa0.png', '2025-07-25 01:30:00', '2025-07-25 01:30:00'),
-(3, 'Data Scientist', 'DS-001', 'Okupasi', 1000000.00, 12, '3 Tahun', 'Skema ini untuk para ilmuwan data yang ingin mendapatkan sertifikasi.', 'dksassets/img/skema_684ae81a3f8ed.png', '2025-07-25 01:30:00', '2025-07-25 01:30:00');
+(1, 'Junior Web Developer', 'JWD-001', 'Okupasi', 500000.00, 10, 3, 'Skema ini untuk calon programmer web junior.', 'dksassets/img/skema_684ae725eaa7c.png', '2025-07-25 01:30:00', '2025-07-25 01:30:00'),
+(2, 'Digital Marketing', 'DM-001', 'Klaster', 750000.00, 8, 3, 'Skema ini mencakup berbagai aspek pemasaran digital.', 'dksassets/img/skema_684ae72a02aa0.png', '2025-07-25 01:30:00', '2025-07-25 01:30:00'),
+(3, 'Data Scientist', 'DS-001', 'Okupasi', 1000000.00, 12, 3, 'Skema ini untuk para ilmuwan data yang ingin mendapatkan sertifikasi.', 'dksassets/img/skema_684ae81a3f8ed.png', '2025-07-25 01:30:00', '2025-07-25 01:30:00');
 
 CREATE TABLE `unit_kompetensi` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
