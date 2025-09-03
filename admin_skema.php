@@ -227,7 +227,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="schema-info">
                 <strong>Kode:</strong> <?php echo htmlspecialchars($skema['kode']); ?><br>
                 <strong>Jenis:</strong> <?php echo htmlspecialchars($skema['jenis']); ?><br>
-                <strong>Harga:</strong> Rp <?php echo htmlspecialchars($skema['harga'],); ?><br>
+                <strong>Harga:</strong> Rp <?php echo number_format($skema['harga'], 0, ',', '.'); ?><br>
                 <strong>Unit Kompetensi:</strong> <?php echo $skema['unit_kompetensi']; ?>
             </div>
             <p><?php echo htmlspecialchars(substr($skema['ringkasan'], 0, 150)) . '...'; ?></p>
